@@ -1,0 +1,2 @@
+Colocar en esta carpeta las páginas guardadas con las búsquedas en Google. Se sugiere que cada archivo tenga
+el mismo formato, por ejemplo: nombredelmedio_1.html (cambiar "1" por el número de página)
