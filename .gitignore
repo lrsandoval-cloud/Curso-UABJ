@@ -1,2 +1,8 @@
-listados/*
+listados/*.html
+listados/*.txt
+
+!listados/listado.txt
+
 pickles/*
+
+!pickles/pickles.txt

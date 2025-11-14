@@ -1,6 +1,10 @@
+import pandas as pd
+
+
 def formato_fecha(fecha):
     import re
     from datetime import datetime
+
 
     meses = {
         'ene': 1, 'enero': 1,
@@ -38,6 +42,20 @@ def formato_fecha(fecha):
 def obtener_stop_words():
     with open('spanish.txt') as f:
         stop_words = f.read().splitlines()
-    agregar = ['10', '100', '1023']
+    with open('mas_stopwords.txt') as f:
+        agregar = f.read().splitlines()
     stop_words = stop_words + agregar
     return stop_words
+
+
+def obtener_dic_palabras():
+    base = pd.read_pickle('pickles/base.pkl')
+    rotulos = list(base['medio'].unique())
+    palabras = {}
+
+    for rotulo in rotulos:
+        segmento = base.query("medio == '" + rotulo + "'")
+        texto = " ".join(segmento['lemas'].dropna())
+        palabras[rotulo] = texto
+
+    return palabras
