@@ -1,0 +1,20 @@
+1) listado.py: localiza las URLs de las páginas de resultados que guardamos
+en la carpeta "listados" y genera un archivo TXT con los que corresponden
+a cada medio.
+
+2) scraping.py: deben configurarse el sitio (línea 7) y los parámetros (tags y
+atributos, líneas 9 a 27) correspondientes al sitio web específico. Captura los contenidos
+de los artículos listados y genera un pickle con el dataframe
+correspondiente a cada uno en la carpeta 'pickles' (si no existe esta
+carpeta, crearla primero)
+
+3) revisa.py: debe configurarse la lista inicial (línea 4) con los nombres
+de los medios. Une todos los pickles en uno que se llama "base.pkl" y crea
+un archivo "listado.html" con la lista de todos los artículos (id y
+título). Este archivo debe abrirse en un browser para detectar los
+registros que deban eliminarse. Tomar nota de los ids.
+
+4) depura.py: depura.py: script interactivo. Primero pide los IDs de los
+registros a eliminar y después va uno por uno pidiendo confirmación.
+Al final reindexa la base y copia el pickle actualizado con el mismo
+nombre (base.pkl)
