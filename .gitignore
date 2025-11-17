@@ -5,4 +5,4 @@ listados/*.txt
 
 pickles/*
 
-!pickles/pickles.txt
+!pickles/.gitkeep

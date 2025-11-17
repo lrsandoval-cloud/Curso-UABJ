@@ -18,3 +18,29 @@ registros que deban eliminarse. Tomar nota de los ids.
 registros a eliminar y después va uno por uno pidiendo confirmación.
 Al final reindexa la base y copia el pickle actualizado con el mismo
 nombre (base.pkl)
+
+5) lemas.py: además de la librería se necesita descargar el modelo. Desde la
+terminal, con la instrucción:
+
+     python -m spacy download es_core_news_sm
+
+   El script ctualiza el pickle base.pkl y le agrega una columna con copetes + textos
+   de cada nota lematizados
+
+6) palabras.py: cuenta la frecuencia de cada palabra en los textos lematizados y arma
+nubes de tags para cada medio
+
+7) caracteres.py: hace un gráfico con la cantidad de caracteres promedio según medio
+
+8) frecuencias.py: a partir de configurar una keyword genera un gráfico de barras
+con la frecuencia de uso de la palabra entre los distintos medios. Debe indicarse la
+keyword
+
+9) correlaciones.py: compara la similitud entre las palabras (lematizadas) que se
+utilizan, de a pares, entre medio y medio. Devuelve tres resultados:
+a) tabla de correlaciones: valor que va de 0 (totalmente disímiles) a 1
+(completamente idénticos)
+b) gráfico de puntos visualizando la correspondencia entre dos medios (indicar al
+comienzo del script cuáles deben compararse)
+c) tabla de palabras coincidentes entre medio y medio
+

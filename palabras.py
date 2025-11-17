@@ -5,8 +5,11 @@ from funciones import obtener_stop_words
 base = pd.read_pickle('pickles/base.pkl')
 rotulos = list(base['medio'].unique())
 
-palabras = obtener_dic_palabras()
+palabras = obtener_dic_palabras(base)
+
 stop_words = obtener_stop_words()
+
+
 
 from sklearn.feature_extraction.text import CountVectorizer
 
@@ -22,6 +25,8 @@ for rotulo in rotulos:
         print(i + " (" + str(v) + "), ", end='')
     print()
     print()
+
+
 
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt

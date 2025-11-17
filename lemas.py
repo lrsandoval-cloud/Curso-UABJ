@@ -21,9 +21,10 @@ for i, row in base.iterrows():
 
     lemas = []
     for token in doc:
-        if token.pos_ not in ['ADP', 'DET', 'PRON', 'NUM', 'CCONJ', 'SCONJ', 'PUNCT']:
+        if token.pos_ not in ['ADP', 'DET', 'PRON', 'NUM', 'CCONJ', 'SCONJ', 'PUNCT', 'SYM']:
             if not token.is_stop:
                 lemas.append(token.lemma_.lower())
     base.loc[i, 'lemas'] = " ".join(lemas)
+
 
 pd.to_pickle(base, 'pickles/base.pkl')

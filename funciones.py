@@ -5,7 +5,6 @@ def formato_fecha(fecha):
     import re
     from datetime import datetime
 
-
     meses = {
         'ene': 1, 'enero': 1,
         'feb': 2, 'febrero': 2,
@@ -21,7 +20,6 @@ def formato_fecha(fecha):
         'dic': 12, 'diciembre': 12
     }
 
-
     #def parsear_fecha(fecha_str):
     # Buscar algo tipo "23 de octubre de 2024"
     #patron = r'(\d{1,2})\s*(?:de\s*)?([a-zñ]+)\s*(?:de\s*)?(\d{4})'
@@ -32,7 +30,6 @@ def formato_fecha(fecha):
         mes = meses.get(mes_texto)
         if mes:
             return f"{anio}-{mes}-{int(dia):02d}"
-
 
     fecha_formateada = fecha_convertida = datetime.strptime(fecha, "%d/%m/%Y %H:%M").strftime("%Y-%m-%d")
 
@@ -48,8 +45,7 @@ def obtener_stop_words():
     return stop_words
 
 
-def obtener_dic_palabras():
-    base = pd.read_pickle('pickles/base.pkl')
+def obtener_dic_palabras(base):
     rotulos = list(base['medio'].unique())
     palabras = {}
 

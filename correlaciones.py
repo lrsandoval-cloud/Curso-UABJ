@@ -1,6 +1,6 @@
 # Indicar los medios a comparar en el gráfico de correlación de palabras
 # y en el top de palabras difereciadoras
-medios = ['lanacion', 'elespectador']
+medios = ['lavanguardia', 'elpais']
 
 
 import pandas as pd
@@ -11,7 +11,7 @@ from funciones import obtener_stop_words
 base = pd.read_pickle('pickles/base.pkl')
 rotulos = list(base['medio'].unique())
 
-palabras = obtener_dic_palabras()
+palabras = obtener_dic_palabras(base)
 stop_words = obtener_stop_words()
 
 vectorizer = CountVectorizer(stop_words=stop_words)
@@ -20,6 +20,7 @@ X = vectorizer.fit_transform(corpus)
 frecuencias = pd.DataFrame(X.toarray(), index=rotulos, columns=vectorizer.get_feature_names_out())
 
 frecuencias = frecuencias.transpose()
+
 
 from scipy.spatial.distance import cosine
 
@@ -31,6 +32,9 @@ correlaciones = frecuencias.corr(method=similitud_coseno)
 print('---------------CORRELACIÓN DE PALABRAS')
 print(correlaciones)
 print()
+
+
+
 
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -58,6 +62,8 @@ for i in np.random.choice(range(frecuencias.shape[0]), 100): # genera 100 númer
     )
 
 plt.show()
+
+
 
 lista_palabras = {}
 for k, p in palabras.items():
