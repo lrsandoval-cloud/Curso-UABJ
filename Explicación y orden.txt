@@ -44,3 +44,24 @@ b) gráfico de puntos visualizando la correspondencia entre dos medios (indicar 
 comienzo del script cuáles deben compararse)
 c) tabla de palabras coincidentes entre medio y medio
 
+10) prepara_sentimientos.py. Asigna los valores de análisis de sentimiento a cada
+oración y crea un data frame con todas las oraciones. Este script necesita algunas
+librerías que PyCharm no detecta automáticamente para su instalación.
+Desde la terminal (uno de los botones de la barra inferior izquierda) indicar:
+
+pip install transformers
+pip install torch
+
+(y Enter luego de cada instrucción). También requiere instalar una librería de
+nltk, algo que se hace descomentando las líneas 4 y 5 (luego se pueden comentar
+de nuevo)
+
+11) sentimientos.py: Este script toma los datos del dataframe recién creado y
+los devuelve de diferentes formas:
+- tabla de datos generales
+- tabla de valores medios según distintos niveles de confianza
+- tabla de valores medios según medio
+- gráficos de evolución en tiempo para el total y discriminado por medio
+
+
+
