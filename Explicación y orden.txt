@@ -24,7 +24,7 @@ terminal, con la instrucción:
 
      python -m spacy download es_core_news_sm
 
-   El script ctualiza el pickle base.pkl y le agrega una columna con copetes + textos
+   El script actualiza el pickle base.pkl y le agrega una columna con copetes + textos
    de cada nota lematizados
 
 6) palabras.py: cuenta la frecuencia de cada palabra en los textos lematizados y arma
@@ -63,5 +63,24 @@ los devuelve de diferentes formas:
 - tabla de valores medios según medio
 - gráficos de evolución en tiempo para el total y discriminado por medio
 
+12) codo.py: realiza un gráfico de codo (Elbow method) para determinar el
+número óptimo de grupos
 
+13) kmeans.py: una vez definida la cantidad de clústers, indicarlas en la línea 1
+de este script. En la línea 2 se puede modificar la cantidad de artículos
+emblemáticos que nos mostrará para describir las características de cada grupo.
+Genera el archivo 'cluster.html' que contiene 20 palabras clave y una lista de
+titulos y enlaces a los artículos más destacados de cada grupo.
+
+14) nube_clusters.py: genera un archivo con una nube de puntos que ilustra la
+distribución de los puntos asignados a cada grupo
+
+15) cuotas.py: este script sirve para crear una muestra representativa con fines
+de realizar análisis de contenido. Se debe indicar en la primer línea la cantidad
+de artículos con que contará la muestra. Las cuotas son representativas por medio
+y clúster, y los artículos se selecionan entre los más emblemáticos en cada caso
+(es decir los que tienen vectores más cercanos al centroide del clúster respectivo).
+
+16) k_sentir.py: genera dos gráficos. El primero con el promedio de label para cada
+clúster y el segundo con la evolución de esos promedios en el tiempo.
 

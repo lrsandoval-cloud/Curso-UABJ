@@ -4,26 +4,26 @@ import funciones
 import pandas as pd
 import time
 
-sitio = 'lanacion'
+sitio = 'elpais'
 
 d_titulo = {
     'tag' : 'h1',
-    'attrs' : {'class': 'com-title'}
+    'attrs' : {'class': 'a_t'}
 }
 
 d_copete = {
-    'tag' : 'h2',
-    'attrs' : {'class': 'com-subhead'}
+    'tag' : 'p',
+    'attrs' : {'class': 'a_st'}
 }
 
 d_texto = {
-    'tag' : ['h2', 'p'],
-    'attrs' : {'class' : ['com-paragraph', 'com-title']}
+    'tag' : 'div',
+    'attrs' : {'class' : 'a_c'}
 }
 
 d_fecha = {
-    'tag': 'time',
-    'attrs' : {'class': 'com-date'}
+    'tag': 'div',
+    'attrs' : {'class': 'a_md_f'}
 }
 
 df = pd.DataFrame(columns = ['medio', 'titulo', 'fecha', 'copete', 'texto', 'url', 'ranking'])

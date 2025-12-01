@@ -31,7 +31,10 @@ def formato_fecha(fecha):
         if mes:
             return f"{anio}-{mes}-{int(dia):02d}"
 
-    fecha_formateada = fecha_convertida = datetime.strptime(fecha, "%d/%m/%Y %H:%M").strftime("%Y-%m-%d")
+    try:
+        fecha_formateada = fecha_convertida = datetime.strptime(fecha, "%d/%m/%Y %H:%M").strftime("%Y-%m-%d")
+    except ValueError:
+        fecha_formateada = '0000-00-00'
 
     return fecha_formateada
 

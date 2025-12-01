@@ -35,7 +35,7 @@ for rotulo in rotulos:
                             'columna' : campo,
                             'medio' : row['medio'],
                             'fecha' : row['fecha'],
-                            'idnota' : idnota
+                            'idnota' : i
                         }
         print(i, row['titulo'])
         idnota += 1
