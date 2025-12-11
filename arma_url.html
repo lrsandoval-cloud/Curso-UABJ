@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Generador de URLs para búsquedas en Google</title>
+
+<style type="text/css">
+h1, h2, h3, h4, p, div, li {
+	font-family: Arial, Helvetica;
+	
+}
+
+#buscar td, #resultado {
+	padding: 0.5em;
+
+}
+
+#comentarios {
+	padding: 0 0.5em;
+	max-width: 800px;
+
+}
+
+
+</style>
+
+<script type="text/javascript">
+	
+function pone_resultado() {
+	resultado1 = ordena(document.getElementById('palabra1').value);
+	resultado2 = ordena(document.getElementById('palabra2').value);
+	resultado3 = ordena(document.getElementById('palabra3').value);
+	resultado = resultado1;
+	if (resultado2 != '') {
+		resultado += '+AND+' + resultado2;
+	}
+	if (resultado3 != '') {
+		resultado += '+AND+' + resultado3;
+	}
+	sitio = document.getElementById('sitio').value
+	resultado += '+site%3A' + sitio
+	fecha_inicio = document.getElementById('inicio').value
+	if (fecha_inicio != '') {
+		resultado += '+after%3A' + fecha_inicio;
+	}
+	fecha_fin = document.getElementById('final').value
+	if (fecha_fin != '') {
+		resultado += '+before%3A' + fecha_fin;
+	}	
+	resultado = 'https://www.google.com/search?q=' + resultado;
+	
+	comienzo = document.getElementById('comienzo').value;
+	comienzo = parseInt(comienzo);
+	
+	paginas = document.getElementById('paginas').value;
+	paginas = parseInt(paginas)
+			
+	salida = ''
+	for (let step = comienzo; step <= comienzo + (paginas * 10); step = step+10) {
+		url = resultado + '&start=' + step;
+		salida += '<p><a href="' + url + '" target="_blank">' + url + '</a></p>\n';
+	}	
+		
+	document.getElementById('resultado').innerHTML = salida;
+	
+}
+
+function ordena(palabras){
+	palabras = palabras.replace(' ', '+')
+	let matriz = palabras.split(",")
+	if (matriz.length < 2){
+		resultado = palabras;	
+	}
+	else {
+		resultado = '(' + matriz.join('+OR+') + ')';	
+	}	
+	
+	return resultado;
+}
+
+
+
+</script>
+
+
+</head>
+<body>
+
+<div id="comentarios">
+
+<h1>Generador de URLs con páginas de resultados en Google</h1>
+
+<h2>Instrucciones</h2>
+
+<p>Este formulario permite generar de un modo sencillo las páginas de resultados de Google desde las que luego es posible capturar las documentos mediante técncas de web scrapping.</p>
+<p>Escribir las palabras en las cajas de texto. Si se desean colocar términos alternativos (por ejemplo: "adolescentes" o "adolescencia") indicarlos separados por comas (adolescentes,adolescencia). Indicar el sitio web donde se quiere realizar la búsqueda y, si es el caso, fechas de inicio y finalziación de los resultados.</p>
+<p>Las páginas de resultados de Google tienen 10 de estos cada una. Por eso indicar en qué resultado se desea iniciar (debe ser un múltiplo de 10) y links a cuántas páginas deben generarse.</p>
+<p>Luego de generados puede hacerse clic opuesto sobre cada link y seleccionar "Guardar enlace como" (o la forma en que el browser usado denomine esta opción) para guardar la página de resultados en un arhivo HTML.</p>
+
+</div>
+
+<form>
+	<table id="buscar">
+		<tr>
+			<td valign="top">
+				<p>Palabra 1<br><input id="palabra1" type="text" size="50"></p>
+				<p>Palabra 2<br><input id="palabra2" type="text" size="50"></p>
+				<p>Palabra 3<br><input id="palabra3" type="text" size="50"></p>
+				<p>Sitio (solo el dominio, por ejemplo: elpais.com)<br><input id="sitio" type="text" size="50"></p>
+				<p>Fecha de inicio<br><input id="inicio" type="date"></p>
+				<p>Fecha de fin<br><input id="final" type="date"></p>
+			</td>
+			<td valign="top">
+				<p>Empezar en el resultado<br><input id="comienzo" type="text" size="8" value="0"><small> (múltiplos de 10)</small></p>
+				<p>Cantidad de páginas de resultados<br><input id="paginas" type="text" size="8" value="5"><small></small></p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="button" name="" value="Mostrar" onclick="pone_resultado()">		
+			</td>
+		</tr>
+	</table>
+</form>
+
+
+<div id="resultado"></div>
+
+
+</body>
+</html>
